@@ -1,0 +1,175 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="max-w-4xl mx-auto px-4 py-12 md:py-16">
+    <div class="text-center mb-8 md:mb-12">
+        <h1 class="text-3xl md:text-4xl font-extrabold mb-3 tracking-tight text-white">Health Assessment</h1>
+        <p class="text-gray-400 text-base md:text-lg">Please fill out the details below. All 20 features are required for accurate analysis.</p>
+    </div>
+
+    <!-- Demo Buttons -->
+    <div class="glass-card p-4 md:p-6 rounded-2xl shadow-xl mb-6 md:mb-8">
+        <h3 class="text-base md:text-lg font-bold mb-4 text-gray-200 text-center">Quick Demo - Fill with Example Data</h3>
+        <div class="flex flex-wrap justify-center gap-3 md:gap-4">
+            <button type="button" onclick="fillDemo('low')" class="bg-gradient-to-r from-caramel-500 to-caramel-600 hover:from-caramel-400 hover:to-caramel-500 text-white px-4 md:px-6 py-2 md:py-3 rounded-xl font-bold transition-all duration-300 transform hover:-translate-y-0.5 shadow-lg text-sm md:text-base">
+                Low Risk Example
+            </button>
+            <button type="button" onclick="fillDemo('medium')" class="bg-gradient-to-r from-caramel-500 to-caramel-600 hover:from-caramel-400 hover:to-caramel-500 text-white px-4 md:px-6 py-2 md:py-3 rounded-xl font-bold transition-all duration-300 transform hover:-translate-y-0.5 shadow-lg text-sm md:text-base">
+                Medium Risk Example
+            </button>
+            <button type="button" onclick="fillDemo('high')" class="bg-gradient-to-r from-caramel-500 to-caramel-600 hover:from-caramel-400 hover:to-caramel-500 text-white px-4 md:px-6 py-2 md:py-3 rounded-xl font-bold transition-all duration-300 transform hover:-translate-y-0.5 shadow-lg text-sm md:text-base">
+                High Risk Example
+            </button>
+        </div>
+        <p class="text-gray-500 text-xs md:text-sm text-center mt-3">Click any button above to auto-fill the form with sample data for demonstration purposes</p>
+    </div>
+
+    <form action="/predict" method="POST" class="space-y-6 md:space-y-8" id="assessmentForm">
+        {% for group_name, features in meta.feature_groups.items() %}
+        <div class="glass-card p-6 md:p-8 rounded-2xl shadow-xl">
+            <h2 class="text-xl md:text-2xl font-bold mb-4 md:mb-6 gradient-text border-b border-caramel-500/30 pb-4">{{ group_name }}</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+                {% for feature in features %}
+                <div class="flex flex-col">
+                    <label class="mb-2 text-xs font-bold uppercase tracking-wider text-gray-400">
+                        {{ meta.feature_labels[feature] }}
+                    </label>
+                    
+                    {% if feature in meta.numerical_features %}
+                    <input type="number" name="{{ feature }}" required value="45" min="30" max="90"
+                           class="p-3 md:p-3.5 bg-gray-800 border border-gray-700 rounded-xl text-gray-200 placeholder-gray-500 focus:ring-2 focus:ring-caramel-500 focus:border-caramel-500 outline-none transition duration-200" />
+                           
+                    {% elif feature in meta.binary_features %}
+                    <select name="{{ feature }}" required
+                            class="p-3 md:p-3.5 bg-gray-800 border border-gray-700 rounded-xl text-gray-200 focus:ring-2 focus:ring-caramel-500 focus:border-caramel-500 outline-none transition duration-200">
+                        <option value="0">No</option>
+                        <option value="1">Yes</option>
+                    </select>
+                    
+                    {% elif feature in meta.categorical_features %}
+                    <select name="{{ feature }}" required
+                            class="p-3 md:p-3.5 bg-gray-800 border border-gray-700 rounded-xl text-gray-200 focus:ring-2 focus:ring-caramel-500 focus:border-caramel-500 outline-none transition duration-200">
+                        {% for opt in meta.categorical_options[feature] %}
+                        <option value="{{ opt }}">{{ opt }}</option>
+                        {% endfor %}
+                    </select>
+                    {% endif %}
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endfor %}
+
+        <div class="flex justify-end pt-4">
+            <button type="submit" class="btn-primary w-full md:w-auto">
+                Assess My Risk
+            </button>
+        </div>
+    </form>
+
+    <!-- Loading Spinner Overlay -->
+    <div id="loading-overlay" class="hidden fixed inset-0 bg-black/70 backdrop-blur-md z-50 flex flex-col items-center justify-center transition-opacity duration-300">
+        <div class="w-16 h-16 border-4 border-caramel-500/30 border-t-caramel-500 rounded-full animate-spin mb-6"></div>
+        <h2 class="text-xl md:text-2xl font-bold text-white tracking-tight animate-pulse mb-2">Analyzing Your Health...</h2>
+        <p class="text-gray-400">Processing your assessment</p>
+    </div>
+
+    <script>
+        document.querySelector('form').addEventListener('submit', function() {
+            document.getElementById('loading-overlay').classList.remove('hidden');
+        });
+
+        // Demo data for different risk levels
+        const demoData = {
+            low: {
+                'Age': 32,
+                'Smoking_History': 0,
+                'Obesity': 0,
+                'Diabetes': 0,
+                'Chronic_Pancreatitis': 0,
+                'Family_History': 0,
+                'Hereditary_Condition': 0,
+                'Jaundice': 0,
+                'Abdominal_Discomfort': 0,
+                'Back_Pain': 0,
+                'Weight_Loss': 0,
+                'Development_of_Type2_Diabetes': 0,
+                'Alcohol_Consumption': 0,
+                'Gender': 'Female',
+                'Country': 'United States',
+                'Physical_Activity_Level': 'High',
+                'Diet_Processed_Food': 'Low',
+                'Access_to_Healthcare': 'High',
+                'Urban_vs_Rural': 'Urban',
+                'Economic_Status': 'High'
+            },
+            medium: {
+                'Age': 48,
+                'Smoking_History': 1,
+                'Obesity': 0,
+                'Diabetes': 0,
+                'Chronic_Pancreatitis': 0,
+                'Family_History': 0,
+                'Hereditary_Condition': 0,
+                'Jaundice': 0,
+                'Abdominal_Discomfort': 1,
+                'Back_Pain': 0,
+                'Weight_Loss': 0,
+                'Development_of_Type2_Diabetes': 0,
+                'Alcohol_Consumption': 0,
+                'Gender': 'Male',
+                'Country': 'United Kingdom',
+                'Physical_Activity_Level': 'Medium',
+                'Diet_Processed_Food': 'Medium',
+                'Access_to_Healthcare': 'Medium',
+                'Urban_vs_Rural': 'Urban',
+                'Economic_Status': 'Middle'
+            },
+            high: {
+                'Age': 72,
+                'Smoking_History': 1,
+                'Obesity': 1,
+                'Diabetes': 1,
+                'Chronic_Pancreatitis': 1,
+                'Family_History': 1,
+                'Hereditary_Condition': 1,
+                'Jaundice': 1,
+                'Abdominal_Discomfort': 1,
+                'Back_Pain': 1,
+                'Weight_Loss': 1,
+                'Development_of_Type2_Diabetes': 1,
+                'Alcohol_Consumption': 1,
+                'Gender': 'Male',
+                'Country': 'Germany',
+                'Physical_Activity_Level': 'Low',
+                'Diet_Processed_Food': 'High',
+                'Access_to_Healthcare': 'Low',
+                'Urban_vs_Rural': 'Rural',
+                'Economic_Status': 'Low'
+            }
+        };
+
+        function fillDemo(riskLevel) {
+            const data = demoData[riskLevel];
+            const form = document.getElementById('assessmentForm');
+            
+            for (const [key, value] of Object.entries(data)) {
+                const input = form.querySelector(`[name="${key}"]`);
+                if (input) {
+                    input.value = value;
+                }
+            }
+            
+            // Visual feedback
+            const buttons = document.querySelectorAll('[onclick^="fillDemo"]');
+            buttons.forEach(btn => {
+                btn.classList.add('opacity-50');
+            });
+            event.target.classList.remove('opacity-50');
+            
+            // Scroll to top of form
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</div>
+{% endblock %}

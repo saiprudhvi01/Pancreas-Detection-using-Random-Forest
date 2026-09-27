@@ -1,0 +1,136 @@
+{
+  "accuracy": 0.6951,
+  "precision_macro": 0.3447,
+  "recall_macro": 0.3331,
+  "f1_macro": 0.276,
+  "precision_weighted": 0.532,
+  "recall_weighted": 0.6951,
+  "f1_weighted": 0.5735,
+  "roc_auc_macro": 0.5054,
+  "roc_auc_weighted": 0.5065,
+  "confusion_matrix": [
+    [
+      6945,
+      5,
+      28
+    ],
+    [
+      982,
+      2,
+      3
+    ],
+    [
+      2029,
+      2,
+      4
+    ]
+  ],
+  "class_labels": [
+    "High Risk",
+    "Low Risk",
+    "Moderate Risk"
+  ],
+  "per_class_metrics": {
+    "High Risk": {
+      "precision": 0.6976,
+      "recall": 0.9953,
+      "f1_score": 0.8202,
+      "support": 6978
+    },
+    "Low Risk": {
+      "precision": 0.2222,
+      "recall": 0.002,
+      "f1_score": 0.004,
+      "support": 987
+    },
+    "Moderate Risk": {
+      "precision": 0.1143,
+      "recall": 0.002,
+      "f1_score": 0.0039,
+      "support": 2035
+    }
+  },
+  "classification_report": "               precision    recall  f1-score   support\n\n    High Risk       0.70      1.00      0.82      6978\n     Low Risk       0.22      0.00      0.00       987\nModerate Risk       0.11      0.00      0.00      2035\n\n     accuracy                           0.70     10000\n    macro avg       0.34      0.33      0.28     10000\n weighted avg       0.53      0.70      0.57     10000\n",
+  "feature_importance": [
+    [
+      "Age",
+      0.23796456385057219
+    ],
+    [
+      "Country",
+      0.11677241980558711
+    ],
+    [
+      "Economic_Status",
+      0.06147004941981149
+    ],
+    [
+      "Diet_Processed_Food",
+      0.059532055371745926
+    ],
+    [
+      "Physical_Activity_Level",
+      0.058741708443724006
+    ],
+    [
+      "Access_to_Healthcare",
+      0.0583702781722715
+    ],
+    [
+      "Gender",
+      0.03975951136161263
+    ],
+    [
+      "Weight_Loss",
+      0.03571984712455202
+    ],
+    [
+      "Alcohol_Consumption",
+      0.03464630235208617
+    ],
+    [
+      "Back_Pain",
+      0.03387551525942567
+    ],
+    [
+      "Urban_vs_Rural",
+      0.03292559874336858
+    ],
+    [
+      "Abdominal_Discomfort",
+      0.032406446785742636
+    ],
+    [
+      "Smoking_History",
+      0.03131081815477112
+    ],
+    [
+      "Obesity",
+      0.02948006348999755
+    ],
+    [
+      "Development_of_Type2_Diabetes",
+      0.029165685665392686
+    ],
+    [
+      "Diabetes",
+      0.02863646697771821
+    ],
+    [
+      "Jaundice",
+      0.028332238190596055
+    ],
+    [
+      "Chronic_Pancreatitis",
+      0.02038680083373415
+    ],
+    [
+      "Family_History",
+      0.017398037085901926
+    ],
+    [
+      "Hereditary_Condition",
+      0.013105592911388067
+    ]
+  ]
+}

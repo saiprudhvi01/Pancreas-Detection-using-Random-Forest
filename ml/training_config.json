@@ -1,0 +1,42 @@
+{
+  "algorithm": "Random Forest Classifier",
+  "library": "scikit-learn",
+  "dataset": "pancreatic_cancer_prediction_sample.csv",
+  "dataset_rows": 49996,
+  "dataset_columns": 25,
+  "features_used": 20,
+  "target_source": "Stage_at_Diagnosis",
+  "risk_mapping": {
+    "Stage I": "Low Risk",
+    "Stage II": "Moderate Risk",
+    "Stage III": "High Risk",
+    "Stage IV": "High Risk"
+  },
+  "risk_labels": [
+    "Low Risk",
+    "Moderate Risk",
+    "High Risk"
+  ],
+  "classification_type": "multiclass (3 classes)",
+  "train_test_split": 0.2,
+  "best_hyperparameters": {
+    "classifier__n_estimators": 300,
+    "classifier__min_samples_split": 2,
+    "classifier__min_samples_leaf": 1,
+    "classifier__max_features": "log2",
+    "classifier__max_depth": 20
+  },
+  "cv_score": 0.5746,
+  "training_date": "2026-09-27T12:36:53.438337",
+  "leakage_columns_excluded": [
+    "Stage_at_Diagnosis",
+    "Survival_Time_Months",
+    "Treatment_Type",
+    "Survival_Status"
+  ],
+  "class_distribution": {
+    "Low Risk": 4937,
+    "Moderate Risk": 10173,
+    "High Risk": 34886
+  }
+}

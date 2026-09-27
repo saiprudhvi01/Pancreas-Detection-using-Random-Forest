@@ -1,0 +1,172 @@
+{
+  "numerical_features": [
+    "Age"
+  ],
+  "binary_features": [
+    "Smoking_History",
+    "Obesity",
+    "Diabetes",
+    "Chronic_Pancreatitis",
+    "Family_History",
+    "Hereditary_Condition",
+    "Jaundice",
+    "Abdominal_Discomfort",
+    "Back_Pain",
+    "Weight_Loss",
+    "Development_of_Type2_Diabetes",
+    "Alcohol_Consumption"
+  ],
+  "categorical_features": [
+    "Gender",
+    "Country",
+    "Physical_Activity_Level",
+    "Diet_Processed_Food",
+    "Access_to_Healthcare",
+    "Urban_vs_Rural",
+    "Economic_Status"
+  ],
+  "all_features": [
+    "Age",
+    "Smoking_History",
+    "Obesity",
+    "Diabetes",
+    "Chronic_Pancreatitis",
+    "Family_History",
+    "Hereditary_Condition",
+    "Jaundice",
+    "Abdominal_Discomfort",
+    "Back_Pain",
+    "Weight_Loss",
+    "Development_of_Type2_Diabetes",
+    "Alcohol_Consumption",
+    "Gender",
+    "Country",
+    "Physical_Activity_Level",
+    "Diet_Processed_Food",
+    "Access_to_Healthcare",
+    "Urban_vs_Rural",
+    "Economic_Status"
+  ],
+  "feature_labels": {
+    "Age": "Age (years)",
+    "Gender": "Gender",
+    "Country": "Country",
+    "Smoking_History": "Smoking History",
+    "Obesity": "Obesity",
+    "Diabetes": "Diabetes",
+    "Chronic_Pancreatitis": "Chronic Pancreatitis",
+    "Family_History": "Family History of Pancreatic Cancer",
+    "Hereditary_Condition": "Hereditary Genetic Condition",
+    "Jaundice": "Jaundice",
+    "Abdominal_Discomfort": "Abdominal Discomfort / Pain",
+    "Back_Pain": "Back Pain",
+    "Weight_Loss": "Unexplained Weight Loss",
+    "Development_of_Type2_Diabetes": "Recent Development of Type 2 Diabetes",
+    "Alcohol_Consumption": "Regular Alcohol Consumption",
+    "Physical_Activity_Level": "Physical Activity Level",
+    "Diet_Processed_Food": "Processed Food in Diet",
+    "Access_to_Healthcare": "Access to Healthcare",
+    "Urban_vs_Rural": "Living Area",
+    "Economic_Status": "Economic Status"
+  },
+  "feature_descriptions": {
+    "Age": "Your current age in years",
+    "Gender": "Your biological sex",
+    "Country": "Country of residence",
+    "Smoking_History": "Do you have a history of smoking?",
+    "Obesity": "Have you been diagnosed with obesity (BMI \u00e2\u2030\u00a5 30)?",
+    "Diabetes": "Have you been diagnosed with diabetes?",
+    "Chronic_Pancreatitis": "Have you been diagnosed with chronic pancreatitis?",
+    "Family_History": "Does your family have a history of pancreatic cancer?",
+    "Hereditary_Condition": "Do you have a hereditary genetic condition?",
+    "Jaundice": "Have you experienced jaundice (yellowing of skin/eyes)?",
+    "Abdominal_Discomfort": "Do you experience persistent abdominal discomfort or pain?",
+    "Back_Pain": "Do you experience persistent back pain?",
+    "Weight_Loss": "Have you experienced unexplained weight loss?",
+    "Development_of_Type2_Diabetes": "Have you recently developed Type 2 Diabetes?",
+    "Alcohol_Consumption": "Do you regularly consume alcohol?",
+    "Physical_Activity_Level": "How would you describe your physical activity level?",
+    "Diet_Processed_Food": "How much processed food is in your diet?",
+    "Access_to_Healthcare": "How would you rate your access to healthcare?",
+    "Urban_vs_Rural": "Do you live in an urban or rural area?",
+    "Economic_Status": "What is your economic status?"
+  },
+  "categorical_options": {
+    "Gender": [
+      "Female",
+      "Male"
+    ],
+    "Country": [
+      "Australia",
+      "Brazil",
+      "Canada",
+      "China",
+      "Germany",
+      "India",
+      "South Africa",
+      "United Kingdom",
+      "United States"
+    ],
+    "Physical_Activity_Level": [
+      "High",
+      "Low",
+      "Medium"
+    ],
+    "Diet_Processed_Food": [
+      "High",
+      "Low",
+      "Medium"
+    ],
+    "Access_to_Healthcare": [
+      "High",
+      "Low",
+      "Medium"
+    ],
+    "Urban_vs_Rural": [
+      "Rural",
+      "Urban"
+    ],
+    "Economic_Status": [
+      "High",
+      "Low",
+      "Middle"
+    ]
+  },
+  "numerical_ranges": {
+    "Age": {
+      "min": 30,
+      "max": 90,
+      "step": 1
+    }
+  },
+  "feature_groups": {
+    "Personal Information": [
+      "Age",
+      "Gender",
+      "Country",
+      "Urban_vs_Rural",
+      "Economic_Status"
+    ],
+    "Medical History": [
+      "Diabetes",
+      "Chronic_Pancreatitis",
+      "Family_History",
+      "Hereditary_Condition",
+      "Development_of_Type2_Diabetes"
+    ],
+    "Symptoms": [
+      "Jaundice",
+      "Abdominal_Discomfort",
+      "Back_Pain",
+      "Weight_Loss"
+    ],
+    "Lifestyle & Risk Factors": [
+      "Smoking_History",
+      "Obesity",
+      "Alcohol_Consumption",
+      "Physical_Activity_Level",
+      "Diet_Processed_Food",
+      "Access_to_Healthcare"
+    ]
+  }
+}

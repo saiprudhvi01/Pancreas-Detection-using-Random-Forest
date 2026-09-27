@@ -1,0 +1,128 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="max-w-7xl mx-auto px-4 py-12">
+    <div class="text-center mb-8 md:mb-12">
+        <h1 class="text-3xl md:text-4xl font-bold mb-2 gradient-text">Health Dashboard</h1>
+        <p class="text-gray-400">Track your assessment history and health insights</p>
+    </div>
+
+    <!-- Stats Cards -->
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+        <div class="glass-card p-4 md:p-6 rounded-2xl">
+            <div class="flex items-center justify-between mb-4">
+                <div class="w-10 h-10 md:w-12 md:h-12 bg-gradient-to-br from-caramel-500 to-caramel-600 rounded-xl flex items-center justify-center">
+                    <svg class="w-5 h-5 md:w-6 md:h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
+                </div>
+                <span class="text-2xl md:text-3xl font-bold text-gray-200">{{ history|length }}</span>
+            </div>
+            <h3 class="text-gray-400 font-medium text-sm md:text-base">Total Assessments</h3>
+        </div>
+        
+        <div class="glass-card p-4 md:p-6 rounded-2xl">
+            <div class="flex items-center justify-between mb-4">
+                <div class="w-10 h-10 md:w-12 md:h-12 bg-gradient-to-br from-green-500 to-emerald-500 rounded-xl flex items-center justify-center">
+                    <svg class="w-5 h-5 md:w-6 md:h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                </div>
+                <span class="text-2xl md:text-3xl font-bold text-gray-200">{{ history|selectattr('risk_level', 'equalto', 'Low Risk')|list|length }}</span>
+            </div>
+            <h3 class="text-gray-400 font-medium text-sm md:text-base">Low Risk Results</h3>
+        </div>
+        
+        <div class="glass-card p-4 md:p-6 rounded-2xl">
+            <div class="flex items-center justify-between mb-4">
+                <div class="w-10 h-10 md:w-12 md:h-12 bg-gradient-to-br from-yellow-500 to-orange-500 rounded-xl flex items-center justify-center">
+                    <svg class="w-5 h-5 md:w-6 md:h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                </div>
+                <span class="text-2xl md:text-3xl font-bold text-gray-200">{{ history|selectattr('risk_level', 'equalto', 'Moderate Risk')|list|length }}</span>
+            </div>
+            <h3 class="text-gray-400 font-medium text-sm md:text-base">Moderate Risk</h3>
+        </div>
+        
+        <div class="glass-card p-4 md:p-6 rounded-2xl">
+            <div class="flex items-center justify-between mb-4">
+                <div class="w-10 h-10 md:w-12 md:h-12 bg-gradient-to-br from-red-500 to-pink-500 rounded-xl flex items-center justify-center">
+                    <svg class="w-5 h-5 md:w-6 md:h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                </div>
+                <span class="text-2xl md:text-3xl font-bold text-gray-200">{{ history|selectattr('risk_level', 'equalto', 'High Risk')|list|length }}</span>
+            </div>
+            <h3 class="text-gray-400 font-medium text-sm md:text-base">High Risk Results</h3>
+        </div>
+    </div>
+
+    <!-- Assessment History -->
+    <div class="glass-card p-6 md:p-8 rounded-2xl mb-6 md:mb-8">
+        <h2 class="text-xl md:text-2xl font-bold mb-4 md:mb-6 text-gray-200">Assessment History</h2>
+        
+        {% if history %}
+        <div class="overflow-x-auto">
+            <table class="w-full">
+                <thead>
+                    <tr class="border-b border-gray-700">
+                        <th class="text-left py-3 px-4 font-semibold text-gray-400">Date</th>
+                        <th class="text-left py-3 px-4 font-semibold text-gray-400">Risk Level</th>
+                        <th class="text-left py-3 px-4 font-semibold text-gray-400">Probability</th>
+                        <th class="text-left py-3 px-4 font-semibold text-gray-400">Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in history|reverse %}
+                    <tr class="border-b border-gray-800 hover:bg-gray-800/50">
+                        <td class="py-4 px-4 text-gray-300">{{ item.date }}</td>
+                        <td class="py-4 px-4">
+                            <span class="px-3 py-1 rounded-full text-xs md:text-sm font-medium
+                                {% if item.risk_level == 'Low Risk' %}bg-green-500/20 text-green-400
+                                {% elif item.risk_level == 'Moderate Risk' %}bg-yellow-500/20 text-yellow-400
+                                {% else %}bg-red-500/20 text-red-400{% endif %}">
+                                {{ item.risk_level }}
+                            </span>
+                        </td>
+                        <td class="py-4 px-4 text-gray-300">{{ item.probability_pct }}%</td>
+                        <td class="py-4 px-4">
+                            <span class="text-green-400 font-medium text-sm">Completed</span>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% else %}
+        <div class="text-center py-12">
+            <svg class="w-16 h-16 mx-auto text-gray-300 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+            <p class="text-gray-500 text-lg">No assessments completed yet</p>
+            <a href="/assessment" class="btn-primary inline-block mt-4">Start Your First Assessment</a>
+        </div>
+        {% endif %}
+    </div>
+
+    <!-- Health Tips -->
+    <div class="glass-card p-6 md:p-8 rounded-2xl">
+        <h2 class="text-xl md:text-2xl font-bold mb-4 md:mb-6 text-gray-200">Daily Health Tips</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="bg-gradient-to-br from-caramel-500/10 to-caramel-600/10 p-4 md:p-6 rounded-xl border border-caramel-500/30">
+                <div class="w-10 h-10 bg-caramel-500 rounded-lg flex items-center justify-center mb-4">
+                    <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                </div>
+                <h3 class="font-bold text-gray-200 mb-2">Stay Active</h3>
+                <p class="text-gray-400 text-sm">Aim for 30 minutes of moderate exercise daily to maintain overall health.</p>
+            </div>
+            
+            <div class="bg-gradient-to-br from-caramel-500/10 to-caramel-600/10 p-4 md:p-6 rounded-xl border border-caramel-500/30">
+                <div class="w-10 h-10 bg-caramel-500 rounded-lg flex items-center justify-center mb-4">
+                    <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+                </div>
+                <h3 class="font-bold text-gray-200 mb-2">Eat Well</h3>
+                <p class="text-gray-400 text-sm">Include plenty of fruits, vegetables, and whole grains in your diet.</p>
+            </div>
+            
+            <div class="bg-gradient-to-br from-caramel-500/10 to-caramel-600/10 p-4 md:p-6 rounded-xl border border-caramel-500/30">
+                <div class="w-10 h-10 bg-caramel-500 rounded-lg flex items-center justify-center mb-4">
+                    <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+                </div>
+                <h3 class="font-bold text-gray-200 mb-2">Sleep Well</h3>
+                <p class="text-gray-400 text-sm">Get 7-9 hours of quality sleep each night for optimal health.</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

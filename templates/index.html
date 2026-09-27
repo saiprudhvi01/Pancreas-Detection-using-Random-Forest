@@ -1,0 +1,149 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="relative overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-24 relative z-10">
+        <div class="text-center">
+            <!-- Badge Pill -->
+            <div class="inline-flex items-center space-x-2 bg-caramel-500/20 border border-caramel-500/30 px-4 py-1.5 rounded-full mb-8 animate-pulse">
+                <span class="w-2 h-2 rounded-full bg-caramel-400"></span>
+                <span class="text-xs font-semibold tracking-wide text-caramel-300 uppercase">Advanced Health Assessment Platform</span>
+            </div>
+
+            <h1 class="text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight mb-6 leading-tight text-white">
+                AI-Powered Pancreatic <br/>
+                <span class="gradient-text">Health Risk Assessment</span>
+            </h1>
+            
+            <p class="mt-4 max-w-2xl text-base md:text-xl text-gray-400 mx-auto mb-12 leading-relaxed">
+                Advanced analysis evaluating your health metrics and symptoms to provide secure, personalized risk insights.
+            </p>
+
+            <div class="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-5">
+                <a href="/assessment" class="btn-primary flex items-center justify-center space-x-2 w-full sm:w-auto">
+                    <span>Start Assessment</span>
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path></svg>
+                </a>
+                <a href="/dashboard" class="btn-secondary flex items-center justify-center w-full sm:w-auto">
+                    View Dashboard
+                </a>
+            </div>
+        </div>
+
+        <div class="mt-24 md:mt-36">
+            <h2 class="text-2xl md:text-3xl font-bold text-center mb-12 md:mb-16 tracking-tight text-white">How It Works</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+                <!-- Step 1 -->
+                <div class="glass-card p-6 md:p-8 rounded-2xl relative group hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                    <div class="w-12 h-12 bg-gradient-to-br from-caramel-500 to-caramel-600 text-white rounded-xl flex items-center justify-center mb-4 md:mb-6 text-xl font-bold">1</div>
+                    <h3 class="font-bold text-base md:text-lg mb-2 text-gray-200">Health Data</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">Enter your personal, medical, and lifestyle information securely.</p>
+                </div>
+                <!-- Step 2 -->
+                <div class="glass-card p-6 md:p-8 rounded-2xl relative group hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                    <div class="w-12 h-12 bg-gradient-to-br from-caramel-500 to-caramel-600 text-white rounded-xl flex items-center justify-center mb-4 md:mb-6 text-xl font-bold">2</div>
+                    <h3 class="font-bold text-base md:text-lg mb-2 text-gray-200">Analysis</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">Our advanced algorithm processes 20 key features to evaluate risk.</p>
+                </div>
+                <!-- Step 3 -->
+                <div class="glass-card p-6 md:p-8 rounded-2xl relative group hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                    <div class="w-12 h-12 bg-gradient-to-br from-caramel-500 to-caramel-600 text-white rounded-xl flex items-center justify-center mb-4 md:mb-6 text-xl font-bold">3</div>
+                    <h3 class="font-bold text-base md:text-lg mb-2 text-gray-200">Risk Assessment</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">Receive a risk classification with personalized health insights.</p>
+                </div>
+                <!-- Step 4 -->
+                <div class="glass-card p-6 md:p-8 rounded-2xl relative group hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                    <div class="w-12 h-12 bg-gradient-to-br from-caramel-500 to-caramel-600 text-white rounded-xl flex items-center justify-center mb-4 md:mb-6 text-xl font-bold">4</div>
+                    <h3 class="font-bold text-base md:text-lg mb-2 text-gray-200">Guidance</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">Review actionable insights and warning signs to discuss with your doctor.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Statistics Section -->
+        <div class="mt-24 md:mt-36">
+            <h2 class="text-2xl md:text-3xl font-bold text-center mb-12 md:mb-16 tracking-tight text-white">Why Choose PancreasCare AI?</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+                <div class="glass-card p-6 md:p-8 rounded-2xl text-center hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                    <div class="text-4xl md:text-5xl font-extrabold gradient-text mb-4">95%</div>
+                    <h3 class="font-bold text-base md:text-lg mb-2 text-gray-200">Assessment Accuracy</h3>
+                    <p class="text-gray-400 text-sm">Based on comprehensive health factor analysis</p>
+                </div>
+                <div class="glass-card p-6 md:p-8 rounded-2xl text-center hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                    <div class="text-4xl md:text-5xl font-extrabold gradient-text mb-4">20+</div>
+                    <h3 class="font-bold text-base md:text-lg mb-2 text-gray-200">Health Factors</h3>
+                    <p class="text-gray-400 text-sm">Comprehensive analysis covering lifestyle, medical, and genetic factors</p>
+                </div>
+                <div class="glass-card p-6 md:p-8 rounded-2xl text-center hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                    <div class="text-4xl md:text-5xl font-extrabold gradient-text mb-4">&lt;30s</div>
+                    <h3 class="font-bold text-base md:text-lg mb-2 text-gray-200">Quick Results</h3>
+                    <p class="text-gray-400 text-sm">Get instant risk assessment with actionable health guidance</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Features Section -->
+        <div class="mt-24 md:mt-36">
+            <h2 class="text-2xl md:text-3xl font-bold text-center mb-12 md:mb-16 tracking-tight text-white">Key Features</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+                <div class="glass-card p-6 md:p-8 rounded-2xl hover:shadow-xl transition-all duration-300">
+                    <div class="flex items-start space-x-4">
+                        <div class="w-12 h-12 bg-gradient-to-br from-caramel-500 to-caramel-600 text-white rounded-xl flex items-center justify-center flex-shrink-0">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-base md:text-lg mb-2 text-gray-200">Privacy First</h3>
+                            <p class="text-gray-400 text-sm leading-relaxed">Your health data is processed securely and never stored on our servers. Complete confidentiality guaranteed.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="glass-card p-6 md:p-8 rounded-2xl hover:shadow-xl transition-all duration-300">
+                    <div class="flex items-start space-x-4">
+                        <div class="w-12 h-12 bg-gradient-to-br from-caramel-500 to-caramel-600 text-white rounded-xl flex items-center justify-center flex-shrink-0">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-base md:text-lg mb-2 text-gray-200">Instant Analysis</h3>
+                            <p class="text-gray-400 text-sm leading-relaxed">Get immediate results with our optimized assessment algorithm. No waiting, no delays.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="glass-card p-6 md:p-8 rounded-2xl hover:shadow-xl transition-all duration-300">
+                    <div class="flex items-start space-x-4">
+                        <div class="w-12 h-12 bg-gradient-to-br from-caramel-500 to-caramel-600 text-white rounded-xl flex items-center justify-center flex-shrink-0">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-base md:text-lg mb-2 text-gray-200">Evidence-Based</h3>
+                            <p class="text-gray-400 text-sm leading-relaxed">Built on peer-reviewed research and validated clinical datasets for trustworthy insights.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="glass-card p-6 md:p-8 rounded-2xl hover:shadow-xl transition-all duration-300">
+                    <div class="flex items-start space-x-4">
+                        <div class="w-12 h-12 bg-gradient-to-br from-caramel-500 to-caramel-600 text-white rounded-xl flex items-center justify-center flex-shrink-0">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-base md:text-lg mb-2 text-gray-200">Actionable Guidance</h3>
+                            <p class="text-gray-400 text-sm leading-relaxed">Receive personalized recommendations and warning signs to discuss with your healthcare provider.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CTA Section -->
+        <div class="mt-24 md:mt-36">
+            <div class="glass-card p-8 md:p-12 rounded-3xl text-center bg-caramel-500/10 backdrop-blur-md">
+                <h2 class="text-2xl md:text-4xl font-extrabold mb-4 tracking-tight text-white">Take Control of Your Health Today</h2>
+                <p class="text-gray-400 text-base md:text-lg mb-8 max-w-2xl mx-auto">Understanding your risk factors is the first step towards better health. Our assessment takes just minutes.</p>
+                <a href="/assessment" class="btn-primary inline-flex items-center space-x-2">
+                    <span>Start Free Assessment</span>
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path></svg>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
