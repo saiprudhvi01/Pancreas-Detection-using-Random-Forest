@@ -155,6 +155,21 @@
             nav .hidden {
                 display: none;
             }
+
+            nav .navbar-inner {
+                gap: 0.5rem;
+            }
+
+            nav .brand-link {
+                font-size: 1.125rem;
+                line-height: 1.5rem;
+            }
+
+            nav .assessment-link {
+                padding: 0.6rem 0.75rem;
+                font-size: 0.8rem;
+                white-space: nowrap;
+            }
         }
     </style>
 </head>
@@ -162,9 +177,9 @@
     <!-- Navbar -->
     <nav class="glass-card sticky top-0 z-50 shadow-lg">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-16 items-center">
+            <div class="navbar-inner flex justify-between h-16 items-center">
                 <div class="flex items-center">
-                    <a href="/" class="text-2xl font-bold gradient-text">
+                    <a href="/" class="brand-link text-2xl font-bold gradient-text whitespace-nowrap">
                         PancreasCare AI
                     </a>
                 </div>
@@ -176,7 +191,7 @@
                     <a href="/profile" class="nav-link font-medium">Profile</a>
                 </div>
                 <div>
-                    <a href="/assessment" class="btn-primary">
+                    <a href="/assessment" class="assessment-link btn-primary">
                         Start Assessment
                     </a>
                 </div>
